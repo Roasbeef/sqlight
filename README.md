@@ -1,3 +1,28 @@
+# sqlight_loom
+
+This is a packaging fork of [sqlight 1.2.0](https://github.com/lpil/sqlight).
+The Gleam `sqlight` module and its API are unchanged. The Hex package is named
+`sqlight_loom` and selects `esqlite_loom` 0.9.0, which retires private query
+statements before returning. Depend on this package instead of `sqlight`;
+both packages define the same modules and cannot be used together.
+
+```toml
+[dependencies]
+sqlight_loom = "== 1.2.0"
+```
+
+```gleam
+import sqlight
+```
+
+The binding source is unchanged from upstream commit
+`b19f58d9f1543b9cf7efd3da8b00e09900f2dd08`. Stock Gleam builds this package;
+Rebar3 and a C compiler build its native SQLite dependency.
+
+The original sqlight documentation follows.
+
+---
+
 # sqlight
 
 [![Package Version](https://img.shields.io/hexpm/v/sqlight)](https://hex.pm/packages/sqlight)

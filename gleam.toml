@@ -1,11 +1,11 @@
-name = "sqlight"
+name = "sqlight_loom"
 version = "1.2.0"
 licences = ["Apache-2.0"]
-description = "Use SQLite from Gleam!"
+description = "Loom packaging of sqlight with deterministic SQLite query retirement"
 
 gleam = ">= 1.15.0"
 
-repository = { type = "github", user = "lpil", repo = "sqlight" }
+repository = { type = "github", user = "Roasbeef", repo = "sqlight" }
 links = [
     { title = "Website", href = "https://gleam.run" },
     { title = "Sponsor", href = "https://github.com/sponsors/lpil" },
@@ -20,7 +20,7 @@ allow_write = ["tmp"]
 
 [dependencies]
 gleam_stdlib = ">= 0.51.0 and < 2.0.0"
-esqlite = "~> 0.8"
+esqlite_loom = "== 0.9.0"
 
 [dev-dependencies]
 gleeunit = "~> 1.0"
