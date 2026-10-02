@@ -2,13 +2,13 @@
 
 This is a packaging fork of [sqlight 1.2.0](https://github.com/lpil/sqlight).
 The Gleam `sqlight` module and its API are unchanged. The Hex package is named
-`sqlight_loom` and selects `esqlite_loom` 0.9.0, which retires private query
+`sqlight_loom` and selects `esqlite_loom` 0.9.1, which retires private query
 statements before returning. Depend on this package instead of `sqlight`;
 both packages define the same modules and cannot be used together.
 
 ```toml
 [dependencies]
-sqlight_loom = "== 1.2.0"
+sqlight_loom = "== 1.2.1"
 ```
 
 ```gleam
@@ -18,6 +18,20 @@ import sqlight
 The binding source is unchanged from upstream commit
 `b19f58d9f1543b9cf7efd3da8b00e09900f2dd08`. Stock Gleam builds this package;
 Rebar3 and a C compiler build its native SQLite dependency.
+
+Version 1.2.1 updates the exact native dependency to `esqlite_loom` 0.9.1.
+The ordinary Gleam API and its upstream implementation remain unchanged.
+The native package adds bounded observation queries for Loom's isolated code
+mode VM, plus synchronous retirement of explicitly prepared seed statements.
+Applications use those Erlang entry points through their private bridge; this
+packaging release does not expose a second query API in the Gleam `sqlight`
+module.
+
+The native build enables SQLite memory accounting and progress callbacks, and
+uses a finite expression-depth limit. The 32 MiB process-wide heap ceiling is
+opt-in: ordinary `sqlight` connections do not initialize it. See the
+[native package documentation](https://github.com/Roasbeef/esqlite#bounded-observation-queries)
+for its ownership, authorization, type, and budget contracts.
 
 The original sqlight documentation follows.
 

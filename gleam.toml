@@ -1,5 +1,5 @@
 name = "sqlight_loom"
-version = "1.2.0"
+version = "1.2.1"
 licences = ["Apache-2.0"]
 description = "Loom packaging of sqlight with deterministic SQLite query retirement"
 
@@ -20,7 +20,7 @@ allow_write = ["tmp"]
 
 [dependencies]
 gleam_stdlib = ">= 0.51.0 and < 2.0.0"
-esqlite_loom = "== 0.9.0"
+esqlite_loom = "== 0.9.1"
 
 [dev-dependencies]
 gleeunit = "~> 1.0"
